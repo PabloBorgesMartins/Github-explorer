@@ -5,7 +5,6 @@ export const Container = styled.div`
   flex-direction: row;
 
   height: 4rem;
-  background: red;
   border-radius: 5px;
   overflow: hidden;
   background: var(--white);
