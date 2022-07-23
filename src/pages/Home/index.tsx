@@ -1,9 +1,14 @@
+import {
+    Container,
+    StyledIcon,
+} from './styles';
 
 export function Home() {
 
     return (
-        <h1>
+        <Container>
             Home
-        </h1>
+            <StyledIcon />
+        </Container>
     )
 }
