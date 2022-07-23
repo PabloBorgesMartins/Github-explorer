@@ -3,6 +3,7 @@ import {
   Content,
   Title,
 } from './styles';
+import { Input } from '../../components/Input';
 
 export function Home() {
 
@@ -10,6 +11,7 @@ export function Home() {
     <Container>
       <Content>
         <Title>Explore repositórios<br />no Github.</Title>
+        <Input />
       </Content>
     </Container>
   )
