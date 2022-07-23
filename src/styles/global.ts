@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import githubLogo from '../assets/github.svg';
 
 export const GlobalStyle = createGlobalStyle`
     :root{
@@ -10,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
         --gray-500: #6C6C80;
         --gray-650: #3D3D4D;
         --gray-700: #3A3A3A;
+        --gray-900: #121214;
     }
     
     * {
@@ -28,7 +30,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        background: var(--gray-100);
+        background-color: var(--gray-100);
+        background-image: url(${githubLogo}); 
+        background-repeat: no-repeat;
+        background-position: 35vw 0;
+        background-size: clamp(120px,40vw,680px);
         -webkit-font-smoothing: antialised;
     }
 

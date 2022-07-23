@@ -6,8 +6,8 @@ export const Container = styled.div`
 `;
 
 export const StyledIcon = styled(Icon).attrs({
-    width: 32,
     height: "auto",
   })`     
-  fill: black;
+  fill: var(--gray-900);
+  width: 2rem;
 `;
