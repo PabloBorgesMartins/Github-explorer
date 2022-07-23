@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ReactComponent as Icon } from "../../assets/logo.svg";
 
 export const Container = styled.div`
   margin: 2rem auto;
@@ -12,17 +11,14 @@ export const Container = styled.div`
 
 export const Content = styled.div`;
   max-width: 720px;
+
+  .search-input{
+    margin: 2rem 0 4rem;
+  }
 `;
 
 export const Title = styled.h1`;
   font-size: 3rem;
   color: var(--gray-700);
   font-weight: 700;
-`;
-
-export const StyledIcon = styled(Icon).attrs({
-    height: "auto",
-  })`     
-  fill: var(--gray-900);
-  width: 2rem;
 `;

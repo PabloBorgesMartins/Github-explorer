@@ -11,7 +11,7 @@ export function Home() {
     <Container>
       <Content>
         <Title>Explore repositórios<br />no Github.</Title>
-        <Input />
+        <Input className="search-input" />
       </Content>
     </Container>
   )

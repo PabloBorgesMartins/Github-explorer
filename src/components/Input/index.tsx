@@ -5,10 +5,10 @@ import {
 
 type InputProps = JSX.IntrinsicElements['input']
 
-export function Input({ ...props }: InputProps) {
+export function Input({ id, className, ...props }: InputProps) {
 
   return (
-    <Container>
+    <Container id={id} className={className}>
       <input
         {...props}
       />

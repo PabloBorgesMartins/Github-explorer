@@ -33,7 +33,7 @@ export const LogoContent = styled.div`
 `;
 
 export const StyledLogo = styled(IconLogo).attrs({
-  height: "auto",
+  height: "100%",
 })`     
   fill: var(--gray-900);
   width: 2rem;
@@ -53,7 +53,7 @@ export const BackButton = styled.button`
 `;
 
 export const ArrowIcon = styled(IconArrow).attrs({
-  height: "auto",
+  height: "100%",
 })`     
   fill: var(--gray-300);
   transform: rotateZ(180deg);
