@@ -4,7 +4,11 @@ import { ReactComponent as IconArrow } from "../../assets/arrow-right.svg";
 
 export const Container = styled.div`
   margin: 2rem auto;
-  max-width: 1024px;
+  max-width: 980px;
+
+  @media(max-width: 1024px){
+    padding: 0 2rem;
+  }
 `;
 
 export const LogoContent = styled.div`

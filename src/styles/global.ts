@@ -33,8 +33,8 @@ export const GlobalStyle = createGlobalStyle`
         background-color: var(--gray-100);
         background-image: url(${githubLogo}); 
         background-repeat: no-repeat;
-        background-position: 35vw 0;
-        background-size: clamp(120px,40vw,680px);
+        background-position: 40vw 0;
+        background-size: clamp(400px,40vw,680px);
         -webkit-font-smoothing: antialised;
     }
 
