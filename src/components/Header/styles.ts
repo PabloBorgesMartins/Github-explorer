@@ -3,7 +3,7 @@ import { ReactComponent as IconLogo } from "../../assets/logo.svg";
 import { ReactComponent as IconArrow } from "../../assets/arrow-right.svg";
 
 export const Container = styled.div`
-  margin: 2rem auto;
+  margin: 2rem auto 3rem;
   max-width: 980px;
 
   @media(max-width: 1024px){
