@@ -5,11 +5,14 @@ import {
   Title,
   LastElement
 } from './styles';
+
 import { Input } from '../../components/Input';
 import { UserCard } from '../../components/UserCard';
+import { Loader } from '../../components/Loader';
+import { NoData } from '../../components/NoData';
+
 import { IUserListed } from '../../interfaces/user';
 import { api } from '../../services/api';
-import { Loader } from '../../components/Loader';
 
 import useIsElementVisible from "../../hooks/useIsElementVisible";
 
@@ -51,6 +54,7 @@ export function Home() {
       setUserList([response.data]);
       setIsLoading(false);
     } catch (error) {
+      setUserList([]);
       setIsLoading(false);
       console.log("Erro ao buscar user", error);
     }
@@ -71,12 +75,16 @@ export function Home() {
           />
         </form>
         {
-          userList.map(user => (
-            <UserCard
-              key={user.html_url}
-              user={user}
-            />
-          ))
+          !!userList.length ? (
+            userList.map(user => (
+              <UserCard
+                key={user.html_url}
+                user={user}
+              />
+            ))
+          ) : (
+            !isLoading && <NoData text='Busca sem resultados' />
+          )
         }
         {isLoading && <Loader />}
         <LastElement
