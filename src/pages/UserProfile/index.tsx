@@ -1,26 +1,39 @@
+import { useCallback, useEffect, useState } from 'react';
 import {
   Container,
   UserDisplay,
   UserData
 } from './styles';
+
+import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { useCallback, useEffect, useState } from 'react';
 import { api } from '../../services/api';
+
 import { Loader } from '../../components/Loader';
 import { IUser } from '../../interfaces/user';
+import { IRepository } from '../../interfaces/repository';
+import { RepoCard } from '../../components/RepoCard';
+
 
 export function UserProfile() {
 
   const { nickname } = useParams();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [userData, setUserData] = useState({} as IUser)
+  const [userData, setUserData] = useState({} as IUser);
+  const [repoList, setRepoList] = useState<IRepository[]>([]);
 
   const fetchUser = useCallback(async () => {
     try {
       setIsLoading(true);
-      let response = await api.get(`/users/${nickname}`);
-      setUserData(response.data);
+      const userRequest = api.get(`/users/${nickname}`);
+      const repoRequest = api.get(`users/${nickname}/repos?page=1&per_page=10`);
+
+      let response = await axios.all([userRequest, repoRequest])
+
+      // let response = await api.get(`/users/${nickname}`);
+      setUserData(response[0].data);
+      setRepoList(response[1].data);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
@@ -38,7 +51,7 @@ export function UserProfile() {
   return (
     <Container>
       <UserDisplay>
-        <img src={userData.avatar_url} alt="User Photo" />
+        <img src={userData.avatar_url} alt="User Profile" />
         <div>
           <h1>{userData.login}/repo</h1>
           <p>{userData.name}</p>
@@ -58,6 +71,14 @@ export function UserProfile() {
           <p>Repositórios</p>
         </div>
       </UserData>
+      {
+        repoList.map(repo => (
+          <RepoCard
+            key={repo.id}
+            repo={repo}
+          />
+        ))
+      }
     </Container>
   )
 }

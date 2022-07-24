@@ -7,6 +7,12 @@ export const Container = styled.div`
   @media(max-width: 1024px){
     padding: 0 2rem;
   }
+
+  a{
+    + a{
+      margin-top: 1rem;
+    }
+  }
 `;
 
 export const UserDisplay = styled.section`
