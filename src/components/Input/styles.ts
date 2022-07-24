@@ -8,12 +8,17 @@ export const Container = styled.div`
   border-radius: 5px;
   overflow: hidden;
   background: var(--white);
+  border: 2px solid transparent;
+
+  :focus, &:hover{
+    border-color: var(--green);
+  }
 
   input{
     width: 100%;
     border: 0;
     padding: 0 1rem;
-    border: 2px solid transparent;
+    
     outline: none;
 
     font-size: 1.125rem;
@@ -21,10 +26,6 @@ export const Container = styled.div`
     &::placeholder{
       font-weight: 400;
       color: var(--gray-300);
-    }
-
-    :focus, &:hover{
-      border-color: var(--green);
     }
   }
 `;

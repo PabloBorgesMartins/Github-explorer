@@ -1,6 +1,6 @@
 import {
   Container,
-  Button
+  Button,
 } from './styles';
 
 type InputProps = JSX.IntrinsicElements['input']
@@ -8,11 +8,11 @@ type InputProps = JSX.IntrinsicElements['input']
 export function Input({ id, className, ...props }: InputProps) {
 
   return (
-    <Container id={id} className={className}>
+    <Container id={id} className={className} >
       <input
         {...props}
       />
-      <Button>
+      <Button type='submit'>
         Pesquisar
       </Button>
     </Container>
