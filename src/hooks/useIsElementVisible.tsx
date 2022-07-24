@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default (el: any) => {
+const useIsElementVisible = (el: any) => {
     const [isVisible, setIsVisible] = useState(false);
     const callback = ([entry]: any) => {
         setIsVisible(entry.isIntersecting);
@@ -16,3 +16,5 @@ export default (el: any) => {
 
     return isVisible && !!el;
 };
+
+export default useIsElementVisible;
