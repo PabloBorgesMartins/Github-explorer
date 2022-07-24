@@ -4,7 +4,9 @@ import {
   UserInfo,
   ArrowIcon
 } from './styles';
+import { useNavigate } from 'react-router-dom';
 import { IUserListed } from '../../interfaces/user';
+import { useCallback } from 'react';
 
 interface UserCardProps {
   user: IUserListed;
@@ -12,8 +14,16 @@ interface UserCardProps {
 
 export function UserCard({ user }: UserCardProps) {
 
+  const navigate = useNavigate();
+
+  const handleNavigate = useCallback(() => {
+    navigate(`/user/${user.login}`);
+  }, [user]);
+
   return (
-    <Container>
+    <Container
+      onClick={handleNavigate}
+    >
       <UserImage
         src={user.avatar_url}
       />
