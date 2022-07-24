@@ -15,6 +15,12 @@ export const Content = styled.div`;
   .search-input{
     margin: 2rem 0 4rem;
   }
+
+  div{
+    + div{
+      margin-top: 1rem;
+    }
+  }
 `;
 
 export const Title = styled.h1`;
