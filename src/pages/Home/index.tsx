@@ -8,13 +8,13 @@ import { Input } from '../../components/Input';
 import { UserCard } from '../../components/UserCard';
 import { IUserListed } from '../../interfaces/user';
 import { api } from '../../services/api';
+import { Loader } from '../../components/Loader';
 
 import useIsElementVisible from "../../hooks/useIsElementVisible";
 
 export function Home() {
 
   const [userList, setUserList] = useState<IUserListed[]>([]);
-  const [pageIndex, setPageIndex] = useState(0);
 
   const fetchData = useCallback(async (val: number) => {
     try {
@@ -26,7 +26,7 @@ export function Home() {
       setIsLoading(false);
       console.log("Erro ao buscar users", error);
     }
-  }, [pageIndex, userList, setUserList])
+  }, [userList, setUserList])
 
   const lastRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -56,7 +56,7 @@ export function Home() {
             />
           ))
         }
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <Loader />}
         <div ref={lastRef} />
       </Content>
     </Container>
