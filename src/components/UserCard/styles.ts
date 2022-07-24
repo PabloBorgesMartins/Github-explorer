@@ -36,7 +36,7 @@ export const UserInfo = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: auto;
+  overflow: hidden;
 
   p{
     overflow: hidden;
