@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Container,
   Content,
@@ -9,27 +9,39 @@ import { UserCard } from '../../components/UserCard';
 import { IUserListed } from '../../interfaces/user';
 import { api } from '../../services/api';
 
+import useIsElementVisible from "../../hooks/useIsElementVisible";
+
 export function Home() {
 
   const [userList, setUserList] = useState<IUserListed[]>([]);
   const [pageIndex, setPageIndex] = useState(0);
 
-  const fetchData = useCallback(async () => {
+  const fetchData = useCallback(async (val: number) => {
     try {
-      let response = await api.get(`/users?since=${pageIndex}&per_page=10`);
+      setIsLoading(true);
+      let response = await api.get(`/users?since=${val}&per_page=10`);
       setUserList(data => [...data, ...response.data]);
+      setIsLoading(false);
     } catch (error) {
+      setIsLoading(false);
       console.log("Erro ao buscar users", error);
     }
   }, [pageIndex, userList, setUserList])
 
+  const lastRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const isLastVisible = useIsElementVisible(lastRef.current);
+
   useEffect(() => {
-    fetchData();
+    fetchData(0);
   }, []);
 
-  // useEffect(() => {
-  //   console.log("userList agora", userList)
-  // }, [userList])
+  useEffect(() => {
+    if (isLastVisible && (userList.length > 0)) {
+      fetchData(userList[userList.length - 1].id);
+    }
+  }, [isLastVisible]);
 
   return (
     <Container>
@@ -38,9 +50,14 @@ export function Home() {
         <Input className="search-input" />
         {
           userList.map(user => (
-            <UserCard key={user.html_url} />
+            <UserCard
+              key={user.html_url}
+              user={user}
+            />
           ))
         }
+        {isLoading && <p>Loading...</p>}
+        <div ref={lastRef} />
       </Content>
     </Container>
   )

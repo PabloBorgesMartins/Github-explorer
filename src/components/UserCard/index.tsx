@@ -4,21 +4,22 @@ import {
   UserInfo,
   ArrowIcon
 } from './styles';
+import { IUserListed } from '../../interfaces/user';
 
 interface UserCardProps {
-
+  user: IUserListed;
 }
 
-export function UserCard({ }: UserCardProps) {
+export function UserCard({ user }: UserCardProps) {
 
   return (
     <Container>
       <UserImage
-        src={"https://imagens.brasil.elpais.com/resizer/AXY-znKLjN2eo__LAuOLMJSSPFA=/1960x0/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/6TE7TL7D4YWZFV2TFRSGNGN6JE.jpg"}
+        src={user.avatar_url}
       />
       <UserInfo>
-        <p>Tiago Neves Sanchez/repoTiago Neves Sanchez/repoTiago Neves Sanchez/repoTiago Neves Sanchez/repoTiago Neves Sanchez/repoTiago Neves Sanchez/repo</p>
-        <span>Descrição do repo</span>
+        <p>{user.login}</p>
+        <span>{user.html_url}</span>
       </UserInfo>
       <ArrowIcon />
     </Container>
