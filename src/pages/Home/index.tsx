@@ -2,14 +2,14 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Container,
   Content,
-  Title,
-  LastElement
+  Title
 } from './styles';
 
 import { Input } from '../../components/Input';
 import { UserCard } from '../../components/UserCard';
 import { Loader } from '../../components/Loader';
 import { NoData } from '../../components/NoData';
+import LastElement from '../../components/LastElement';
 
 import { IUserListed } from '../../interfaces/user';
 import { api } from '../../services/api';
@@ -88,8 +88,8 @@ export function Home() {
         }
         {isLoading && <Loader />}
         <LastElement
-          ref={lastRef}
           isVisible={!!userList.length}
+          ref={lastRef}
         />
       </Content>
     </Container>

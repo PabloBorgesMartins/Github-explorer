@@ -1,8 +1,4 @@
-import styled, { css } from 'styled-components';
-
-interface LastElementProps {
-  isVisible: boolean;
-}
+import styled from 'styled-components';
 
 export const Container = styled.div`
   margin: 2rem auto;
@@ -31,12 +27,4 @@ export const Title = styled.h1`;
   font-size: 3rem;
   color: var(--gray-700);
   font-weight: 700;
-`;
-
-export const LastElement = styled.section<LastElementProps>`;
-  display: none;
-
-  ${props => props.isVisible && css`
-    display: block;
-  `}
 `;
