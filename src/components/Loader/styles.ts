@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ReactComponent as IconLoading } from "../../assets/loading.svg";
 
-export const Container = styled.div`
+export const Container = styled.section`
   display: flex;
   justify-content: center;
   margin: 5rem 0;
