@@ -73,3 +73,17 @@ $ npm run dev
 
 - `build`: cria a versão de produção
 - `start`: inicia um servidor simples com o código de produção pós build
+
+## 📊 Testes
+
+### ☢️ Google Lighthouse
+
+<p align="center">
+  <img src="https://live.staticflickr.com/65535/52239822619_cab3626fc6_w.jpg" alt="Teste Lighthouse" />
+</p>
+<p align="center">
+  <img src="https://live.staticflickr.com/65535/52239546528_75e4e147bb_z.jpg" alt="Teste Lighthouse" />
+</p>
+
+- As cores de primeiro e segundo plano não têm uma taxa de contraste suficiente
+  - A cor de alguns textos `#A8A8B3` não tem o contraste suficiente de 4.5:1 do WCAG. Uma alternativa seria trocá-la para uma cor mais escura como `#6C6C80`.
