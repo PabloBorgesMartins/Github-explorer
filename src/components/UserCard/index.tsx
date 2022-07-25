@@ -1,3 +1,4 @@
+import { useCallback, memo } from 'react';
 import {
   Container,
   UserImage,
@@ -6,19 +7,18 @@ import {
 } from './styles';
 import { useNavigate } from 'react-router-dom';
 import { IUserListed } from '../../interfaces/user';
-import { useCallback } from 'react';
 
 interface UserCardProps {
   user: IUserListed;
 }
 
-export function UserCard({ user }: UserCardProps) {
+function UserCard({ user }: UserCardProps) {
 
   const navigate = useNavigate();
 
   const handleNavigate = useCallback(() => {
     navigate(`/user/${user.login}`);
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <Container
@@ -26,6 +26,7 @@ export function UserCard({ user }: UserCardProps) {
     >
       <UserImage
         src={user.avatar_url}
+        alt="user"
       />
       <UserInfo>
         <p>{user.login}</p>
@@ -35,3 +36,5 @@ export function UserCard({ user }: UserCardProps) {
     </Container>
   )
 }
+
+export default memo(UserCard);

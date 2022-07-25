@@ -12,6 +12,7 @@ export const Container = styled.div`
 
 export const Text = styled.p`
   font-weight: 700;
+  color: var(--gray-500);
   font-size: 1rem;
 `;
 
@@ -19,6 +20,6 @@ export const Text = styled.p`
 export const EmptyIcon = styled(Icon).attrs({
   height: "100%",
 })`     
-  fill: var(--gray-900);
+  fill: var(--gray-500);
   width: 4rem;
 `;

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import {
   Container,
   RepositoryInfo,
@@ -9,7 +10,7 @@ interface RepoCardProps {
   repo: IRepository;
 }
 
-export function RepoCard({ repo }: RepoCardProps) {
+function RepoCard({ repo }: RepoCardProps) {
 
   return (
     <Container
@@ -24,3 +25,5 @@ export function RepoCard({ repo }: RepoCardProps) {
     </Container>
   )
 }
+
+export default memo(RepoCard);

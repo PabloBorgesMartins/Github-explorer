@@ -8,7 +8,7 @@ import { api } from '../../services/api';
 import useIsElementVisible from "../../hooks/useIsElementVisible";
 /*Components*/
 import { Input } from '../../components/Input';
-import { UserCard } from '../../components/UserCard';
+import UserCard from '../../components/UserCard';
 import { Loader } from '../../components/Loader';
 import { NoData } from '../../components/NoData';
 import LastElement from '../../components/LastElement';

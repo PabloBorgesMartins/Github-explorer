@@ -10,7 +10,7 @@ import { api } from '../../services/api';
 import useIsElementVisible from '../../hooks/useIsElementVisible';
 /*Components*/
 import { Loader } from '../../components/Loader';
-import { RepoCard } from '../../components/RepoCard';
+import RepoCard from '../../components/RepoCard';
 import LastElement from '../../components/LastElement';
 /*Interfaces*/
 import { IRepository } from '../../interfaces/repository';
