@@ -3,7 +3,7 @@
 </div>
 
 <p align="center">
-  Este projeto foi desenvolvido para o teste de Front-end do KaBuM! Você pode testar em <a href="https://main.d1gc9wggiqlqjj.amplifyapp.com/" target="__blank">Github explorer</a>.
+  Este projeto foi desenvolvido para o teste de Front-end da Ace Cortex Você pode testar em <a href="https://main.d1gc9wggiqlqjj.amplifyapp.com/" target="__blank">Github explorer</a>.
 </p>
 
 <p align="center">
