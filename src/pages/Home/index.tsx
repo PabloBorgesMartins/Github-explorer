@@ -2,7 +2,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   Container,
   Content,
-  Title
+  Title,
+  SearchTag,
+  XIcon
 } from './styles';
 import { api } from '../../services/api';
 import useIsElementVisible from "../../hooks/useIsElementVisible";
@@ -19,21 +21,27 @@ export function Home() {
 
   const [userList, setUserList] = useState<IUserListed[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [searched, setSearched] = useState("");
 
   const lastRef = useRef(null);
   const isLastVisible = useIsElementVisible(lastRef.current);
 
-  const fetchData = useCallback(async (val: number) => {
+  const fetchData = useCallback(async (val: number, reset?: boolean) => {
     try {
       setIsLoading(true);
       let response = await api.get(`/users?since=${val}&per_page=10`);
-      setUserList([...userList, ...response.data]);
+      if (reset) {
+        setUserList([...response.data]);
+        setSearched("");
+      } else {
+        setUserList([...userList, ...response.data]);
+      }
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
       console.log("Erro ao buscar users", error);
     }
-  }, [userList, setUserList]);
+  }, [userList, setUserList, setIsLoading, setSearched]);
 
   useEffect(() => {
     fetchData(0);
@@ -45,10 +53,13 @@ export function Home() {
     }
   }, [isLastVisible]);
 
-  const search = async (e: any) => {
+  const search = useCallback(async (e: any) => {
     e.preventDefault();
+    if (!e.target.searchInput.value)
+      return;
     try {
       setIsLoading(true);
+      setSearched(e.target.searchInput.value);
       let response = await api.get(`/users/${e.target.searchInput.value}`);
       setUserList([response.data]);
       setIsLoading(false);
@@ -57,7 +68,7 @@ export function Home() {
       setIsLoading(false);
       console.log("Erro ao buscar user", error);
     }
-  }
+  }, [setSearched, setUserList, setIsLoading]);
 
   return (
     <Container>
@@ -73,6 +84,13 @@ export function Home() {
             type="text"
           />
         </form>
+        <SearchTag
+          isVisible={!!searched && !isLoading}
+          onClick={() => fetchData(0, true)}
+        >
+          {searched}
+          <XIcon />
+        </SearchTag>
         {
           !!userList.length ? (
             userList.map(user => (
